@@ -41,8 +41,8 @@ void CoreComponent::InitializeGlobals(HMODULE hModule)
 	//GObjects = reinterpret_cast<TArray<UObject*>*>(GetGObjects());  for pattern scanning
 	//GNames = reinterpret_cast<TArray<FNameEntry*>*>(GetGNames());  for pattern scanning
 	uintptr_t BaseAddress = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
-	GObjects = reinterpret_cast<TArray<UObject*>*>(BaseAddress + 0x247ED38);
-	GNames = reinterpret_cast<TArray<FNameEntry*>*>(BaseAddress + 0x247ECF0);
+	GObjects = reinterpret_cast<TArray<UObject*>*>(BaseAddress + 0x241F358);
+	GNames = reinterpret_cast<TArray<FNameEntry*>*>(BaseAddress + 0x241F310);
 
 	if (AreGlobalsValid())
 	{
@@ -73,8 +73,8 @@ bool CoreComponent::AreGlobalsValid()
 bool CoreComponent::AreGObjectsValid()
 {
 	if (GObjects
-		&& UObject::GObjObjects()->Num() > 0
-		&& UObject::GObjObjects()->Max() > UObject::GObjObjects()->Num())
+		&& UObject::GObjObjects()->size() > 0
+		&& UObject::GObjObjects()->capacity() > UObject::GObjObjects()->size())
 	{
 		return true;
 	}
@@ -85,8 +85,8 @@ bool CoreComponent::AreGObjectsValid()
 bool CoreComponent::AreGNamesValid()
 {
 	if (GNames
-		&& FName::Names()->Num() > 0
-		&& FName::Names()->Max() > FName::Names()->Num())
+		&& FName::Names()->size() > 0
+		&& FName::Names()->capacity() > FName::Names()->size())
 	{
 		return true;
 	}

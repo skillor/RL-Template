@@ -47,9 +47,9 @@ public: // Helper functions for class instance grabbing/manipulation.
 	{
 		if (std::is_base_of<UObject, T>::value)
 		{
-			for (int32_t i = UObject::GObjObjects()->Num(); i > 0; i--)
+			for (int32_t i = UObject::GObjObjects()->size(); i > 0; i--)
 			{
-				UObject* uObject = UObject::GObjObjects()->At(i);
+				UObject* uObject = UObject::GObjObjects()->at(i);
 
 				if (uObject && uObject->IsA<T>())
 				{

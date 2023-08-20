@@ -304,7 +304,7 @@ void EventsComponent::HookEventPre(const std::string& functionName, std::functio
 
 void EventsComponent::HookEventPre(uint32_t functionIndex, std::function<void(PreEvent&)> preHook)
 {
-	UObject* foundFunction = UObject::GObjObjects()->At(functionIndex);
+	UObject* foundFunction = UObject::GObjObjects()->at(functionIndex);
 
 	if (foundFunction && foundFunction->IsA(UFunction::StaticClass()))
 	{
@@ -339,7 +339,7 @@ void EventsComponent::HookEventPost(const std::string& functionName, std::functi
 
 void EventsComponent::HookEventPost(uint32_t functionIndex, std::function<void(const PostEvent&)> postHook)
 {
-	UObject* foundFunction = UObject::GObjObjects()->At(functionIndex);
+	UObject* foundFunction = UObject::GObjObjects()->at(functionIndex);
 
 	if (foundFunction && foundFunction->IsA(UFunction::StaticClass()))
 	{
